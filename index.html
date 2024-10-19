@@ -30,18 +30,21 @@
             const image = getParameterByName('og:image');
 
             if (title) {
+                consle.log(title)
                 const titleMeta = document.querySelector('meta[name="og:title"]');
                 if (titleMeta) {
                     totleMeta.setAttribute('content', title);
                 }
             }
-            if (description) {                                
+            if (description) {      
+                consle.log(description)
                 const descriptionMeta = document.querySelector('meta[name="og:description"]');
                 if (descriptionMeta) {
                     descriptionMeta.setAttribute('content', description);
                 }
             }
-            if (image) {                                
+            if (image) {  
+                consle.log(image)
                 const imageMeta = document.querySelector('meta[name="og:image"]');
                 if (imageMeta) {
                     imageMeta.setAttribute('content', image);
