@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Example</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="埋め込みタイトル" />
+    <meta property="og:description" content="埋め込みの説明文" />
+    <meta property="og:image" content="https://example.com/image.png" />
+    <meta property="og:url" content="https://<username>.github.io/<repository-name>" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .embed {
+            border-radius: 8px;
+            padding: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="embed" class="embed"></div>
+
+<script>
+    function createEmbed() {
+        const params = new URLSearchParams(window.location.search);
+        const title = params.get('title') || 'デフォルトタイトル';
+        const description = params.get('description') || 'デフォルトの説明';
+        const image = params.get('image') || '';
+        const color = params.get('color') || '0099ff';
+        const footerText = params.get('footerText') || 'デフォルトのフッターテキスト';
+
+        const embedDiv = document.getElementById('embed');
+        embedDiv.style.backgroundColor = `#${color}`;
+        
+        embedDiv.innerHTML = `
+            <h1>${title}</h1>
+            <p>${description}</p>
+            ${image ? `<img src="${image}" alt="画像" style="max-width: 100%; height: auto;" />` : ''}
+            <footer style="margin-top: 20px; color: #ccc;">
+                <p>${footerText}</p>
+            </footer>
+        `;
+    }
+
+    window.onload = createEmbed;
+</script>
+
+</body>
+</html>
