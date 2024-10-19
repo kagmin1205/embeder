@@ -16,42 +16,29 @@
 
 <script>
     function getParameterByName(name) {
-            const url = window.location.href;
-            name = name.replace(/[\[\]]/g, '\\$&');
-            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-                  results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        let url = new URL(window.location.href);
+        let params = url.searchParams;
+            return params.get(name);
         }
-     function updateMetaTags() {
-            const title = getParameterByName('og:title');
-            const description = getParameterByName('og:description');
-            const image = getParameterByName('og:image');
+    const title = getParameterByName('title');
+    const description = getParameterByName('description');
+    const image = getParameterByName('image');
 
-            if (title) {
-                consle.log(title)
-                const titleMeta = document.querySelector('meta[name="og:title"]');
-                if (titleMeta) {
-                    totleMeta.setAttribute('content', title);
-                }
-            }
-            if (description) {      
-                consle.log(description)
-                const descriptionMeta = document.querySelector('meta[name="og:description"]');
-                if (descriptionMeta) {
-                    descriptionMeta.setAttribute('content', description);
-                }
-            }
-            if (image) {  
-                consle.log(image)
-                const imageMeta = document.querySelector('meta[name="og:image"]');
-                if (imageMeta) {
-                    imageMeta.setAttribute('content', image);
-                }
-            }
-        }
-    window.onload = updateMetaTags;
+    console.log(title)
+    const titleMeta = document.querySelector('meta[property="og:title"]');
+    if (titleMeta) {
+        titleMeta.setAttribute('content', title);
+    }
+    console.log(description)
+    const descriptionMeta = document.querySelector('meta[property="og:description"]');
+    if (descriptionMeta) {
+        descriptionMeta.setAttribute('content', description);
+    }
+    console.log(image)
+    const imageMeta = document.querySelector('meta[property="og:image"]');
+    if (imageMeta) {
+        imageMeta.setAttribute('content', image);
+    }
 </script>
 
 </body>
